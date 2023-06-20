@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import '../styles/game.css'
 import Die from '../components/Die'
 import { nanoid } from 'nanoid'
+import Lottie from "lottie-react";
+import wonLottie from '../Lottie/won.json'
 
 export default function Game() {
 
@@ -29,15 +31,23 @@ export default function Game() {
   const [gameArray, setGameArray] = useState(createGame())
 
   const [gameWon, setGameWon] = useState(false)
+  const [showWon, setshowWon] = useState(false)
 
   useEffect(() => {
     const allHeld = gameArray.every(die => die.isHeld)
     const allSame = gameArray.every(die => gameArray[0].number===die.number)
     if(allHeld && allSame){
       setGameWon(true)
+      setshowWon(true)
+
+      setTimeout(() => {
+        setshowWon(false)
+      }, 3000);
+      
     }
     else{
       setGameWon(false)
+      setshowWon(false)
     }
   }, [gameArray])
   
@@ -82,6 +92,27 @@ export default function Game() {
 
   
   return (
+    <>
+          { showWon?<div
+            style={{
+              display:'flex',
+              width:'100vw',
+              height:'100vh',
+              overflow:'hidden'
+            }}
+          >
+          <Lottie animationData={wonLottie} loop={true} 
+            style={{
+              height:"60vh",
+              zIndex: 100,
+              margin:'auto',
+            }}
+          />
+
+          </div>
+          : null  
+        }
+
     <div className="wrapper">
       <div className='main-container'>
 
@@ -109,5 +140,6 @@ export default function Game() {
       </div>
 
     </div>
+    </>
   )
 }
