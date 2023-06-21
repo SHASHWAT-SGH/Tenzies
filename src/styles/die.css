@@ -30,4 +30,21 @@
         display: flex;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     }
+
+    .six-container{
+        line-height: 62% !important ;
+    }
+    .three-container{
+        line-height: 35% !important ;
+    }
+    .four-container{
+        line-height: 65% !important ;
+    }
+    .two-container{
+        line-height: 60% !important ;
+    }
+    .five-container{
+        line-height: 35% !important ;
+    }
 }
+
