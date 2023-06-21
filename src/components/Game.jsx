@@ -52,7 +52,8 @@ export default function Game() {
   }, [gameArray])
   
   
-  
+  const [rollCount, setRollCount] = useState(0)
+
   function handleDieClick(key) {
     setGameArray(oldGameArray => 
       oldGameArray.map(die => {
@@ -84,6 +85,8 @@ export default function Game() {
           )
         })
       )
+
+      setRollCount(prev=>++prev)
   }
 
   function handleRestart(){
@@ -137,7 +140,9 @@ export default function Game() {
             </button>
         </div>
 
+        <div className='rollCounter'>Number of times rolled : {rollCount}</div>
       </div>
+
 
     </div>
     </>
