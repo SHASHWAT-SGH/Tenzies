@@ -39,6 +39,7 @@ export default function Game() {
     if(allHeld && allSame){
       setGameWon(true)
       setshowWon(true)
+      setRollCount(0)
 
       setTimeout(() => {
         setshowWon(false)
